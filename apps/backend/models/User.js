@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const {db} = require('../database/init');
+const {Training} = require("./Training");
 
 const User = db.define('user', {
   email: {
@@ -24,3 +25,8 @@ const User = db.define('user', {
 module.exports = {
   User: User,
 }
+
+User.hasMany(Training, { as: 'CreatedTrainings', foreignKey: 'trainer_id' });
+User.belongsToMany(Training, { as: 'VisitedTrainings', through: 'training_customer', foreignKey: 'customer_id' });
+Training.belongsTo(User, { as: 'Trainer', foreignKey: 'trainer_id' });
+Training.belongsToMany(User, { as: 'Customers', through: 'training_customer', foreignKey: 'training_id' });

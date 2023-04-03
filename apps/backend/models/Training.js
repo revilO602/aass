@@ -16,6 +16,9 @@ const Training = db.define('training', {
   },
 })
 
+
+
+
 module.exports = {
   Training: Training,
 }

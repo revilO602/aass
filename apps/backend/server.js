@@ -3,6 +3,7 @@
 const {testDb} = require('./database/init');
 
 const express = require('express');
+const {createTables} = require("./database/construct");
 
 const server = express();
 const port = 8080;
@@ -14,4 +15,5 @@ server.listen(port, () => {
 });
 
 testDb()
+createTables()
 
