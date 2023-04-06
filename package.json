@@ -15,12 +15,14 @@
   "devDependencies": {
     "eslint-config-custom": "*",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "1.8.3"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.30.0"
   },
   "packageManager": "npm@9.6.2"
