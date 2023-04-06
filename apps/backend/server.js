@@ -7,6 +7,7 @@ const {createTables} = require("./database/construct");
 const {Training} = require("./models/Training");
 const {User} = require("./models/User");
 const {TrainingCustomer} = require("./models/TrainingCustomers");
+const https = require('http');
 
 const server = express();
 const port = 8080;
@@ -105,18 +106,32 @@ server.get('/trainings/confirmations', async (req, res) => {
   }
 })
 
-server.post('/trainings/:trainingId/reserve', async (req, res) => {
+server.post('/trainings/confirmations/:trainingId/confirm', async (req, res) => {
   try {
-    const training = await Training.findByPk(parseInt(req.params.trainingId));
+    const training = await TrainingCustomer.findByPk(parseInt(req.params.trainingId));
     if (training === null) {
       res.status(404).send({
         message:
           "Not found."
       });
     } else {
-      const customerId = req.body.customer_id
-      await TrainingCustomer.build({training_id: training.id, customer_id: customerId})
-      res.status(201).send()
+      https.get(`http://localhost:8080/trainings/${training.training_id}/calculate`, (resp) => {
+        let data = '';
+
+        // A chunk of data has been received.
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+
+        // The whole response has been received. Print out the result.
+        resp.on('end', () => {
+          console.log(data);
+          res.status(201).send(data)
+        });
+
+      }).on("error", (err) => {
+        console.log("Error: " + err.message);
+      });
     }
   } catch(error) {
     res.status(500).send({
@@ -127,5 +142,5 @@ server.post('/trainings/:trainingId/reserve', async (req, res) => {
 })
 // confirm by customer
 testDb()
-createTables()
+//createTables()
 
