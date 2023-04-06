@@ -21,6 +21,8 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1",
     "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.30.0"
