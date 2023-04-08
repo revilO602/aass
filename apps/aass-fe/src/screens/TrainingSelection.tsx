@@ -1,34 +1,42 @@
 import React from "react";
 import { redirect } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function TrainingSelection() {
 
     //define traing type
     type Training = {
-        id: number;
-        trainer_id: number;
-        duration_min: number;
-        calories_per_min: number;
-        name: string;
-        created_at: string;
-        updated_at: string;
-    }
+    id: number;
+    trainer_id: number;
+    duration_min: number;
+    calories_per_min: number;
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+}
 
    
-    const [trainings, setTrainings] = React.useState([]);
+    const [trainings, setTrainings] = useState<Training[]>([]);
 
-        useEffect(() => {
-            fetch('http://localhost:8080/trainings/', {
-                method: "GET",
-                mode : "no-cors",
-                headers: { "Content-Type": "application/json" }
-            })
+    useEffect(() => {
+        fetch('http://localhost:8080/trainings/', {
+            method: "GET",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            console.log("API response received:", response);
+            return response.json();
+        })
+        .then(data => {
+            console.log("API data received:", data);
+            setTrainings(data);
+        })
+        .catch(error => {
+            console.error("API request failed:", error);
+        });
+    }, []);
     
-                .then(response => response.json())
-                .then(data => setTrainings(data));
-
-        }, []);
 
         console.log(trainings);
 
@@ -39,12 +47,9 @@ export default function TrainingSelection() {
                 <label>
                     Training:
                     <select>
-                        {/* {trainings.map((training) => (
+                        {trainings.map((training) => (
                             <option value={training.id}>{training.name}</option>
-                        ))} */}
-                        <option value="1">Training 1</option>
-                        <option value="2">Training 2</option>
-                        <option value="3">Training 3</option>
+                        ))}
                     </select>
                 </label>
                 <input type="submit" value="Submit"/>
