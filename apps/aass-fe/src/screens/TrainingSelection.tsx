@@ -30,19 +30,14 @@ export default function TrainingSelection() {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        console.log("API response received:", response);
         return response.json();
       })
       .then((data) => {
-        console.log("API data received:", data);
         setTrainings(data);
       })
       .catch((error) => {
-        console.error("API request failed:", error);
       });
   }, []);
-
-  console.log(trainings);
 
   const handleReserve = async () => {
     try {
@@ -50,10 +45,8 @@ export default function TrainingSelection() {
         `http://localhost:8080/trainings/${selectedTrainingId}/reserve`
       );
       const data = await response.json();
-      console.log("API data received:", data);
         navigate("/trainingConfirmation");
     } catch (error) {
-      console.error("API request failed:", error);
     }
   };
 
