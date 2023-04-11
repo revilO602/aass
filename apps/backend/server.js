@@ -3,6 +3,7 @@
 const {testDb} = require('./database/init');
 
 const express = require('express');
+const cors = require('cors');
 const {createTables} = require("./database/construct");
 const {Training} = require("./models/Training");
 const {User} = require("./models/User");
@@ -13,6 +14,13 @@ const server = express();
 const port = 8080;
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
+server.use(cors());
+server.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 server.listen(port, () => {
   console.log(`Trainigs Management running at http://localhost:${port}`);
