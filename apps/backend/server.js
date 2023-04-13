@@ -103,7 +103,7 @@ server.get('/trainings/:trainingId/calculate', async (req, res) => {
 
 server.get('/trainings/confirmations', async (req, res) => {
   try {
-    const trainings = await TrainingCustomer.findAll();
+    const trainings = await TrainingCustomer.findAll({where: {confirmed: false}});
     console.log(JSON.stringify(trainings));
     res.send(JSON.stringify(trainings));
   } catch(error) {
@@ -123,6 +123,8 @@ server.post('/trainings/confirmations/:trainingId/confirm', async (req, res) => 
           "Not found."
       });
     } else {
+      training.confirmed = true;
+      training.save()
       https.get(`http://localhost:8080/trainings/${training.training_id}/calculate`, (resp) => {
         let data = '';
 
@@ -150,5 +152,5 @@ server.post('/trainings/confirmations/:trainingId/confirm', async (req, res) => 
 })
 // confirm by customer
 testDb()
-//createTables()
+createTables()
 
