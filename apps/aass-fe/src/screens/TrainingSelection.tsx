@@ -2,6 +2,7 @@ import React, { ChangeEvent } from "react";
 import { Navigate, redirect, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+
 export default function TrainingSelection() {
   //define traing type
   type Training = {
@@ -21,9 +22,11 @@ export default function TrainingSelection() {
   };
   const navigate = useNavigate();
 
+  const id = localStorage.getItem("id");
 
 
   useEffect(() => {
+
     fetch("http://localhost:8080/trainings/", {
       method: "GET",
       mode: "cors",
@@ -42,7 +45,13 @@ export default function TrainingSelection() {
   const handleReserve = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/trainings/${selectedTrainingId}/reserve`
+        `http://localhost:8080/trainings/${selectedTrainingId}/reserve`,
+        {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({id}),
+        }
       );
       const data = await response.json();
         navigate("/trainingConfirmation");
