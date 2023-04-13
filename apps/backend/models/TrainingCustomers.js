@@ -8,6 +8,10 @@ const TrainingCustomer = db.define('training_customer', {
   customer_id: {
     type: Sequelize.INTEGER
   },
+  confirmed: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
 })
 
 module.exports = {
