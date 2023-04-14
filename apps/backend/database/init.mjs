@@ -1,5 +1,6 @@
-const Sequelize = require('sequelize');
-const db = new Sequelize('aass', 'aass', 'LetLeo!123', {
+import {Sequelize} from "sequelize";
+
+export const db = new Sequelize('aass', 'aass', 'LetLeo!123', {
     host: 'aass.postgres.database.azure.com',
     dialect: 'postgres',
     dialectOptions: {
@@ -10,7 +11,7 @@ const db = new Sequelize('aass', 'aass', 'LetLeo!123', {
     },
 });
 
-async function testDb(){
+export async function testDb(){
     try {
         await db.authenticate();
         console.log('Connection has been established successfully.');
@@ -19,7 +20,3 @@ async function testDb(){
     }
 }
 
-module.exports = {
-    db: db,
-    testDb: testDb,
-}

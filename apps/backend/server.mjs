@@ -1,14 +1,15 @@
 // Oliver Leontiev
 
-const {testDb} = require('./database/init');
 
-const express = require('express');
-const cors = require('cors');
-const {createTables} = require("./database/construct");
-const {Training} = require("./models/Training");
-const {User} = require("./models/User");
-const {TrainingCustomer} = require("./models/TrainingCustomers");
-const https = require('http');
+
+import {createTables} from "./database/construct.mjs";
+import * as http from "http";
+import {TrainingCustomer} from "./models/TrainingCustomers.mjs";
+import {Training} from "./models/Training.mjs";
+import {User} from "./models/User.mjs";
+import express from "express";
+import {testDb} from "./database/init.mjs";
+import cors from "cors";
 
 const server = express();
 const port = 8080;
@@ -125,7 +126,7 @@ server.post('/trainings/confirmations/:trainingId/confirm', async (req, res) => 
     } else {
       training.confirmed = true;
       training.save()
-      https.get(`http://localhost:8080/trainings/${training.training_id}/calculate`, (resp) => {
+      http.get(`http://localhost:8080/trainings/${training.training_id}/calculate`, (resp) => {
         let data = '';
 
         // A chunk of data has been received.

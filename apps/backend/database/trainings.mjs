@@ -1,4 +1,4 @@
-const trainings = [
+export const trainings = [
   {
     trainer_id: 3,
     duration_min: 15,
@@ -18,7 +18,3 @@ const trainings = [
     name: "Silovy trening",
   },
 ]
-
-module.exports = {
-  trainings: trainings,
-}

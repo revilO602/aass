@@ -1,7 +1,8 @@
-const Sequelize = require('sequelize');
-const {db} = require('../database/init');
+import {Sequelize} from "sequelize";
+import {db} from "../database/init.mjs";
 
-const Training = db.define('training', {
+
+export const Training = db.define('training', {
   trainer_id: {
     type: Sequelize.INTEGER
   },
@@ -16,9 +17,3 @@ const Training = db.define('training', {
   },
 })
 
-
-
-
-module.exports = {
-  Training: Training,
-}
