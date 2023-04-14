@@ -9,11 +9,19 @@ import {Training} from "./models/Training.mjs";
 import {User} from "./models/User.mjs";
 import express from "express";
 import {testDb} from "./database/init.mjs";
+import cors from "cors";
 
 const server = express();
 const port = 8080;
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
+server.use(cors());
+server.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 server.listen(port, () => {
   console.log(`Trainigs Management running at http://localhost:${port}`);

@@ -8,6 +8,7 @@
     "camunda": "node camunda.mjs"
   },
   "dependencies": {
-    "camunda-external-task-client-js": "^3.0.0"
+    "camunda-external-task-client-js": "^3.0.0",
+    "cors": "^2.8.5"
   }
 }
