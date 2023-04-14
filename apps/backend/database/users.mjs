@@ -1,4 +1,4 @@
-const users = [
+export const users = [
   {
     email: "xletanovsky@stuba.sk",
     password: "123",
@@ -32,7 +32,3 @@ const users = [
     last_name: "Mrkva",
   },
 ]
-
-module.exports = {
-  users: users,
-}

@@ -1,10 +1,11 @@
-const {db} = require('./init')
-const {User} = require('../models/User')
-const {Training} = require('../models/Training')
-const {users} = require("./users");
-const {trainings} = require("./trainings");
+import {db} from "./init.mjs";
+import {users} from "./users.mjs";
+import {User} from "../models/User.mjs";
+import {trainings} from "./trainings.mjs";
+import {Training} from "../models/Training.mjs";
 
-async function createTables(){
+
+export async function createTables(){
     await db.sync({ force: true });
     console.log("Creating users");
     for (const user of users) {
@@ -19,6 +20,4 @@ async function createTables(){
 
 }
 
-module.exports = {
-    createTables: createTables,
-}
+

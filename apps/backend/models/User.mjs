@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize');
-const {db} = require('../database/init');
-const {Training} = require("./Training");
+import {Sequelize} from "sequelize";
+import {db} from "../database/init.mjs";
+import {Training} from "./Training.mjs";
 
-const User = db.define('user', {
+export const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true
@@ -22,9 +22,6 @@ const User = db.define('user', {
   },
 })
 
-module.exports = {
-  User: User,
-}
 
 User.hasMany(Training, { as: 'CreatedTrainings', foreignKey: 'trainer_id' });
 User.belongsToMany(Training, { as: 'VisitedTrainings', through: 'training_customer', foreignKey: 'customer_id' });
