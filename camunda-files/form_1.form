@@ -1,0 +1,27 @@
+{
+  "components": [
+    {
+      "label": "Email",
+      "type": "textfield",
+      "id": "Field_1k7tghs",
+      "key": "email",
+      "defaultValue": "xleontiev@stuba.sk"
+    },
+    {
+      "label": "Heslo",
+      "type": "textfield",
+      "id": "Field_1z03xgp",
+      "key": "password",
+      "defaultValue": "123"
+    }
+  ],
+  "type": "default",
+  "id": "loginForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.9.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
