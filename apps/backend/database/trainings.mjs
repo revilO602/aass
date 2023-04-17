@@ -17,4 +17,10 @@ export const trainings = [
     calories_per_min: 30,
     name: "Silovy trening",
   },
+  {
+    trainer_id: 4,
+    duration_min: 30,
+    calories_per_min: 40,
+    name: "Joga",
+  },
 ]
