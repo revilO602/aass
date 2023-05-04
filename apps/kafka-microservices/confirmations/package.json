@@ -1,0 +1,11 @@
+{
+  "name": "confirmations",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "confirmations.mjs",
+  "scripts": {
+    "dev": "node confirmations.mjs",
+    "start": "node confirmations.mjs"
+  }
+}

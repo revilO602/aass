@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "camunda": "node camunda.mjs"
+    "camunda": "node ../camunda/camunda.mjs"
   },
   "dependencies": {
     "camunda-external-task-client-js": "^3.0.0",

@@ -1,0 +1,11 @@
+{
+  "name": "statistics",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "statistics.mjs",
+  "scripts": {
+    "dev": "node statistics.mjs",
+    "start": "node statistics.mjs"
+  }
+}

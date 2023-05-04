@@ -1,0 +1,11 @@
+{
+  "name": "trainings",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "trainings.mjs",
+  "scripts": {
+    "dev": "node trainings.mjs",
+    "start": "node trainings.mjs"
+  }
+}
