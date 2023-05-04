@@ -53,7 +53,7 @@ export default function TrainingSelection() {
           body: JSON.stringify({id}),
         }
       );
-      const data = await response.json();
+     // const data = await response.json();
         navigate("/trainingConfirmation");
     } catch (error) {
     }
