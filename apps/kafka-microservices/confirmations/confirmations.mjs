@@ -76,7 +76,7 @@ server.post('/trainings/confirmations/:trainingId/confirm', async (req, res) => 
       await producer.send({
         topic: 'training-confirmed',
         messages: [
-          {value: JSON.stringify({ training_id: training.id})},
+          {value: JSON.stringify({ training_id: training.training_id})},
         ],
       })
       await producer.disconnect()
