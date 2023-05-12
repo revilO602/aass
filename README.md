@@ -9,6 +9,8 @@ V priečinku _apps/_ sa nachádzajú rôzne verzie frontendu aj backendu:
 * _kafka-microservices_: verzia backendu s mikroslužbami a kafka eventami
 * _monolit_: verzia backendu s monolitickou štruktúrou
 
+v priečinku _camunda-files_ sa nachádza Camunda diagram BP a Camunda formuláre.
+
 ## Návod na spustenie
 
 Príkaz na nainštalovanie balíčkov: ``npm install``
